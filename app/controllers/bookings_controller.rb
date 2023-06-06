@@ -14,6 +14,22 @@ class BookingsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.user = current_user
+    @booking.course = Course.find(params[:course_id])
+    if @booking.destroy
+      redirect_to dashboard_path
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def booking_params
+    params.require(:booking).permit(:status)
   end
 
   def destroy
@@ -32,4 +48,5 @@ class BookingsController < ApplicationController
   def booking_params
     params.require(:booking).permit(:status)
   end
+
 end
