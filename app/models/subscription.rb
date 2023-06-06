@@ -1,5 +1,5 @@
 class Subscription < ApplicationRecord
   has_many :payements
 
-  validates :price, :type, presence: true
+  validates :price, :sub_type, presence: true
 end
