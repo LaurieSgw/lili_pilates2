@@ -1,25 +1,57 @@
-<h2>Sign up</h2>
+<div class="container my-3">
+  <h1>Création de compte</h1>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+    <div class="form">
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+
+        <%= f.input :last_name,
+                        required: true,
+                        autofocus: true,
+                        label: "Nom de famille",
+                        input_html: { autocomplete: "Nom" }
+        %>
+        <%= f.input :first_name,
+                    required: true,
+                    autofocus: true,
+                    label: "Prénom",
+                    input_html: { autocomplete: "Prénom" }%>
+        <%= f.input :age,
+                    required: true,
+                    autofocus: true,
+                    collection: 18..90,
+                    input_html: { autocomplete: "Age" }%>
+        <%= f.input :level,
+                    required: true,
+                    autofocus: true,
+                    label: "Niveau en Pilates", collection: ["Débutant", "Intermédiaire", "Confirmé"],
+                    input_html: { list: ["Débutant", "Intermédiaire", "Confirmé"]}%>
+
+        <%= f.input :health_record,
+                    required: true,
+                    autofocus: true,
+                    label: "Antécédents médicaux importants à mentionner (Blessures, douleurs...)",
+                    input_html: { autocomplete: "Y a t-il des antécédents médicaux/blessures à prendre en compte ? " }%>
+        <%= f.input :email,
+                    required: true,
+                    autofocus: true,
+                    input_html: { placeholder: "vivelepilates@gmail.com"}%>
+        <%= f.input :phone_number,
+                    required: false,
+                    label: "Numéro de téléphone",
+                    placeholder: "06 00 00 00 00"%>
+        <%= f.input :password,
+                    required: true,
+                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password_confirmation,
+                    required: true,
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.button :submit, "Valider", class: "button2" %>
+      <% end %>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+  <div class="my-3">
+        <%= render "devise/shared/links" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
