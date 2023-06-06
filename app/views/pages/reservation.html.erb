@@ -1,3 +1,17 @@
 <div class="container my-3">
   <h1 class="text-center">Réserver un cours</h1>
+   <h3 class="my-3 text-center">Les cours sont donnés en présentiel à l’adresse suivante : <strong>48 CHEMIN DE ROUFFIAC 31200 ROUFFIAC </strong>et durent <strong>50 minutes</strong>. </h3>
+  <div>
+    <h2>ETAPE 1 : SELECTIONNER VOTRE TYPE D’ABONNEMENT</h2>
+      <h3 class="my-2" >Vous avez choisi cette option-ci :</strong></h3>
+      <div class="align-self-center">
+        <div class=" my-4 col-6 card-abo">
+          <h3> <strong><% @subscriptions.each do |subscription| %></strong> </h3>
+            <%= subscription.price %>
+          <% end %>
+        </div>
+      </div>
+  </div>
+  <h2 class="my-4">ETAPE 2 : SELECTIONNER UNE (OU plusieurs) date(s)</h2>
+    <%= render "form", reservation: @reservation  %>
 </div>
