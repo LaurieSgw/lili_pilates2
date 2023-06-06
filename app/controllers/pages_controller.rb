@@ -9,6 +9,8 @@ class PagesController < ApplicationController
   end
 
   def reservation
+    @subscriptions = Subscription.all
+    @courses = Course.all
   end
 
 end
