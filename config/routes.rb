@@ -2,8 +2,11 @@ Rails.application.routes.draw do
 
   devise_for :users
   root to: "pages#home"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  get "dashboard", to: "pages#dashboard"
+  get "reservation", to: "pages#reservation"
+  resources :subscriptions, only: %i[new create]
+  resources :payements
+  resources :courses, only: %i[index]
+  resources :boookings, only: %i[new create destroy]
+  resources :reviews, only: %i[index new create]
 end

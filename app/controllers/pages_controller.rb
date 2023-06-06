@@ -8,4 +8,7 @@ class PagesController < ApplicationController
   def dashboard
   end
 
+  def reservation
+  end
+
 end
