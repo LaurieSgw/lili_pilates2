@@ -1,0 +1,43 @@
+<% if @reviews.empty? %>
+  <p class="mute"><em>Soyez la première personne à laisser un avis !</em></p>
+<% else %>
+<div id="carouselExampleControls" class="carousel slide carousel-dark slider" data-ride="carousel" >
+  <div class="carousel-inner my-3 ">
+    <% @reviews.each do |review| %>
+      <% if review == @reviews.first %>
+        <div class="carousel-item active" >
+          <div class=" card-review">
+            <div class="d-flex justify-content-between">
+              <h3><%= review.user.last_name.capitalize %> <%= review.user.first_name %></h3>
+              <h3><%= review.date %></h3>
+            </div>
+            <p class="text-truncate" ><%= review.content %></p>
+            <p class= "text-center"><%= link_to "Voir plus", reviews_path %></p>
+          </div>
+        </div>
+      <% else %>
+        <div class="carousel-item" >
+          <div class=" card-review">
+            <div class="d-flex justify-content-between">
+              <h3><%= review.user.last_name.capitalize %> <%= review.user.first_name %></h3>
+              <h3><%= review.date %></h3>
+            </div>
+            <p class="text-truncate" ><%= review.content %></p>
+            <p class= "text-center"><%= link_to "Voir plus", reviews_path %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+</div>
+
+<% end %>

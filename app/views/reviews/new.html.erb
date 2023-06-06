@@ -1,2 +1,14 @@
-<h1>Reviews#new</h1>
-<p>Find me in app/views/reviews/new.html.erb</p>
+<div class="container my-3"><h1>Votre avis</h1>
+  <%= simple_form_for @review do |f| %>
+  <%= f.input  :date,
+              order: [:day, :month, :year],
+               hint: "*La date de votre commentaire sera automatiquement celle d'aujourd'hui" %>
+  <%= f.input :content,
+              hint: "200 caractères maximum.",
+              label: "Laissez un commentaire ici : " %>
+    <%= f.button :submit, "Valider", class: "button2" %>
+  <% end %>
+    <div class="my-3">
+      <%= link_to "Retour à la page d'accueil", root_path %>
+    </div>
+</div>

@@ -10,3 +10,57 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+h1 {
+  color: $super-pink;
+  font-weight: 400;
+  font-family: $headers-font;
+  font-size: 32px;
+}
+
+h2 {
+  color: $super-pink;
+  font-weight: 300;
+  font-family: $body-font;
+  font-size: 22px;
+  text-transform: uppercase;
+}
+
+h3{
+  color: $dark-blue;
+  font-weight: 400;
+  font-family: $body-font;
+  font-size: 16px;
+}
+
+
+p{
+  color: $dark-blue;
+  font-weight: 400;
+  font-family: $body-font;
+  font-size: 12px;
+}
+
+a{
+  color: $dark-blue;
+  text-decoration: underline;
+
+  &:hover {
+    color: $super-pink
+  }
+}
+
+.background-color {
+  background:whitesmoke;
+}
+
+.body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.mute {
+  color: $dark-blue;
+  text-decoration: none;
+}

@@ -1,2 +1,35 @@
-<h1>Reviews#index</h1>
-<p>Find me in app/views/reviews/index.html.erb</p>
+<div class="container">
+  <h1 class="text-center my-3 ">Vos avis (<%= @reviews.count %>)</h1>
+    <div class="row justify-content-around" >
+     <% @reviews.each do |review| %>
+        <div class="col-3 card-review m-3 ">
+         <div class="d-flex justify-content-between">
+            <h3><%= review.user.last_name.capitalize %> <%= review.user.first_name %></h3>
+            <h3><%= review.date %></h3>
+          </div>
+          <p><%= review.content %></p>
+        </div>
+      <% end %>
+    </div>
+
+  <div class="text-center my-5">
+    <%= link_to "Laisser un avis", new_review_path(@review), class: "button2" %>
+  </div>
+   <div class="text-center my-3 container ">
+   <%= link_to "", reviews_path, class: "fa-solid fa-angles-up text-decoration-none" %>
+  </div>
+
+
+</div>
+
+
+<div class="row">
+  <div class="footer">
+    <div class="my-1 col-8">
+    </div>
+    <div class="footer-links">
+      <h3 class="my-1">Retrouvez moi sur Instagram:</h3>
+      <a href="https://www.instagram.com/lisa.physiopilates/?hl=fr" class="fab fa-instagram"></a>
+    </div>
+  </div>
+</div>

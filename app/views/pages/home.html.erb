@@ -1,2 +1,64 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= asset_path 'Lisa-home.jpg' %>');">
+  <div class="container text-center ">
+    <div class="banner-text">
+      <h1>Prendre soin de soi grâce au Pilates </h1>
+      <h2> Renforcer son corps & trouver son équilibre </h2>
+    </div>
+    <div class="banner-space">
+      <%= link_to "Réserver un cours", subscriptions_path, class:"button2" %>
+      <p>*La première séance est gratuite !</p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class=" col-6 my-3 text-end card-space">
+    <h1>Qui suis-je ? </h1>
+    <h3 >Rémy et Mélanie ont trente ans et vivent dans le même quartier à Paris. Elle multiplie les rendez-vous ratés sur les réseaux sociaux pendant qu'il peine à faire une rencontre. Tous les deux victimes de cette solitude des grandes villes, à l’époque hyper connectée où l’on pense pourtant que se rencontrer devrait être plus simple… Deux individus, deux parcours. Sans le savoir, ils empruntent deux routes qui les mèneront dans une même direction… celle d’une histoire amour ?</h3>
+  </div>
+  <div class="d-flex justify-content-end">
+    <div class=" col-6 my-3 text-start card-space">
+      <h1>Qu'est-ce que je propose ? </h1>
+      <h3 >Rémy et Mélanie ont trente ans et vivent dans le même quartier à Paris. Elle multiplie les rendez-vous ratés sur les réseaux sociaux pendant qu'il peine à faire une rencontre. Tous les deux victimes de cette solitude des grandes villes, à l’époque hyper connectée où l’on pense pourtant que se rencontrer devrait être plus simple… Deux individus, deux parcours. Sans le savoir, ils empruntent deux routes qui les mèneront dans une même direction… celle d’une histoire amour ?</h3>
+    </div >
+  </div>
+
+  <div class="my-3 text-center card-space">
+    <h1>En savoir plus sur l'histoire du Pilates </h1>
+    <h3>Rémy et Mélanie ont trente ans et vivent dans le même quartier à Paris. Elle multiplie les rendez-vous ratés sur les réseaux sociaux pendant qu'il peine à faire une rencontre. Tous les deux victimes de cette solitude des grandes villes, à l’époque hyper connectée où l’on pense pourtant que se rencontrer devrait être plus simple… Deux individus, deux parcours. Sans le savoir, ils empruntent deux routes qui les mèneront dans une même direction… celle d’une histoire amour ?</h3>
+  </div>
+  <div class="my-5 text-center">
+    <%= link_to "Réserver un cours", subscriptions_path, class:"button2" %>
+    <p class=" my-3">*La première séance est gratuite !</p>
+  </div>
+
+</div>
+  <div class=" card-space row" >
+    <div class="col-6 banner-bottom" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= asset_path 'Lisa-home-bottom.jpg' %>');" >
+    </div>
+    <div class="col-6">
+      <h2 class="text-center my-3 ">Vos avis (<%= @reviews.count %>)</h2>
+      <div>
+        <%= render "pages/carroussel", home: @home %>
+      </div>
+      <div class="mt-3 mb-5 justify-content-center d-flex ">
+
+        <span><%= link_to "Tous les avis", reviews_path %> </span>  |  <span><%= link_to "Laisser un avis", new_review_path(@review) %></span>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="text-end my-3 container ">
+   <%= link_to "", root_path, class: "fa-solid fa-angles-up text-decoration-none" %>
+  </div>
+
+<div class="row">
+  <div class="footer">
+    <div class="my-1 col-8">
+    </div>
+    <div class="footer-links">
+      <h3 class="my-1">Retrouvez moi sur Instagram:</h3>
+      <a href="https://www.instagram.com/lisa.physiopilates/?hl=fr" class="fab fa-instagram"></a>
+    </div>
+  </div>
+</div>
