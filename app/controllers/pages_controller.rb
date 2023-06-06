@@ -8,9 +8,9 @@ class PagesController < ApplicationController
   def dashboard
   end
 
-  def reservations
-    @subscriptions =  subscriptions.all
-    @courses = Course.first(4)
+  def reservation
+    @subscriptions = Subscription.all
+    @courses = Course.all
   end
 
 end
