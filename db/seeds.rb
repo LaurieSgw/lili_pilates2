@@ -38,6 +38,20 @@ user = User.new(
 user.save!
 puts "Users created"
 
+user = User.new(
+  email: "admin@example.com",
+  password: "password",
+  age: 25,
+  last_name: "admin",
+  first_name: "user",
+  phone_number: "0690909090",
+  level: "Débutant",
+  health_record: "/"
+)
+user.save!
+puts "Users created"
+
+
 puts "Creating reviews"
 5.times do
   review = Review.new(
@@ -115,3 +129,4 @@ course = Course.new(
 course.save!
 
 puts "Courses ok"
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
