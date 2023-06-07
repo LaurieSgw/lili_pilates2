@@ -6,11 +6,19 @@
     <h2>ETAPE 1 : SELECTIONNER VOTRE TYPE D’ABONNEMENT</h2>
       <h3 class="my-2" >Vous avez choisi cette option-ci :</strong></h3>
       <div class="align-self-center">
-        <div class=" my-4 col-6 card-abo">
+        <% if @subscription %>
+            <div class=" my-4 col-6 card-abo">
+              <h3>Vous avez un abonnement en cours : <strong>Abonnement <%= subscription.sub_type %> séances</strong></h3>
+                <p> Il vous reste <%= @subscription.courses_number %> cours à réserver.</p>
+            </div>
+          <% else %>
           <h3> <strong><% @subscriptions.each do |subscription| %></strong> </h3>
-            <%= subscription.price %>
+            <div class=" my-4 col-6 card-abo">
+              <h3>Abonnement <%= subscription.sub_type %> séances</h3>
+                <h3><%= subscription.price %> €</h3>
+            </div>
           <% end %>
-        </div>
+        <% end %>
       </div>
   </div>
   <h2 class="my-4">ETAPE 2 : SELECTIONNER UNE (OU plusieurs) date(s)</h2>

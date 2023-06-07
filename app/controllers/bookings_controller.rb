@@ -7,9 +7,10 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.course = find(params[:course_id])
+    @booking.course = Course.find(params[:course_id])
     @booking.user = current_user
-    if @booking.save
+    if @booking.course.available_places.positive?
+      @booking.save && @booking.course.available_places -= 1
       redirect_to dashboard_path
     else
       render :new, status: :unprocessable_entity
