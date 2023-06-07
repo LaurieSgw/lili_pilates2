@@ -2,7 +2,8 @@
   <%= simple_form_for @review do |f| %>
   <%= f.input  :date,
               order: [:day, :month, :year],
-               hint: "*La date de votre commentaire sera automatiquement celle d'aujourd'hui" %>
+               disabled: true
+               hint: "*La date de votre commentaire sera automatiquement celle d'aujourd'hui"
   <%= f.input :content,
               hint: "200 caractères maximum.",
               label: "Laissez un commentaire ici : " %>
