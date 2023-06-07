@@ -52,7 +52,7 @@ puts "Reviews ok"
 
 
 subscription = Subscription.new(
-  sub_type: "Séance d'essai gratuite",
+  sub_type: 1,
   price: 0,
   courses_number: 7
 )
@@ -60,21 +60,21 @@ subscription.save!
 
 puts "Create subscriptions"
 subscription = Subscription.new(
-  sub_type: "Réserver une séance",
+  sub_type: 1,
   price: 15,
   courses_number: 2
 )
 subscription.save!
 
 subscription = Subscription.new(
-  sub_type: "Abonnement 10 séances",
+  sub_type: 10,
   price: 120,
   courses_number: 5
 )
 subscription.save!
 
 subscription = Subscription.new(
-  sub_type: "Abonnement 20 séances",
+  sub_type: 20,
   price: 240,
   courses_number: 9
 )
