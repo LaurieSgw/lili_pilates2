@@ -3,20 +3,22 @@
   // flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
   background: white;
   border: 1px solid $super-pink;
   box-shadow: $dark-blue(0, 0, 0, 0.25);
   border-radius: 4px;
+  margin-right: 5%;
 
-  &:checked {
-    background: #FFFBAC;
-    border: 1px solid $super-pink;
-    box-shadow: $dark-blue(0, 0, 0, 0.25);
-    border-radius: 50px;
-}
 }
 
+.card-abo:hover {
+  background: #FFFBAC;
+  border: 1px solid $super-pink;
+  box-shadow: $dark-blue(0, 0, 0, 0.25);
+  border-radius: 4px;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
 
 
 .card-course {
