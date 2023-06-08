@@ -21,10 +21,11 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @booking.user = current_user
     @booking.course = Course.find(params[:course_id])
-    if @booking.destroy
+    if @booking.course.date < Date.today
+      @booking.destroy
       redirect_to dashboard_path
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity, notice: "Désolée ! Il n'est pas possible d'annuler votre réservation moins de 24h avant le cours."
     end
   end
 
