@@ -48,13 +48,11 @@ gem "sassc-rails"
 # Devise
 gem "devise"
 
-
-# Active Admin
-gem 'activeadmin'
-
 #I18n traduction
 gem "rails-i18n"
 
+# Rails admin
+gem 'rails_admin', '~> 3.0'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -86,3 +84,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+gem "cssbundling-rails"
+gem "cssbundling-rails"
