@@ -1,8 +1,11 @@
-fr:
-  time:
-    am: a.m.
+  date:
+    abbr_day_names: [Dim, Lun, Mar, Mer, Jeu, Ven, Sam]
+    abbr_month_names: [~, Jan, Fév, Mar, Avr, Mai, Jun, Jul, Août, Sep, Oct, Nov, Déc]
+    day_names: [Dimanche, Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi]
     formats:
-      default: '%a, %d %b %Y %H:%M:%S %z'
-      long: '%B %d, %Y %H:%M'
-      short: '%d %b %H:%M'
-    pm: p.m.
+      day_month: "%b %d"
+      default: "%Y-%m-%d"
+      hour: "%H:%M"
+      long: "%A %d %B %Y"
+      long_month: "%d %B %Y"
+      month_abbr: "%d %b %Y"
