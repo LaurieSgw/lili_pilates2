@@ -33,14 +33,6 @@
   margin-right: 3%;
   margin-bottom: 2%;
 
-
-  &:checked{
-    background: #FFFBAC;
-    border: 1px solid $super-pink;
-    box-shadow:  $dark-blue(0, 0, 0, 0.25);
-    border-radius: 4px;
-  }
-
   &:disabled{
     background: #FFEEFB;
     border: 1px solid $dark-gray;
@@ -48,7 +40,14 @@
     border-radius: 4px;
   }
   }
-DD
+
+  .card-course:hover {
+    background: #FFFBAC;
+    border: 1px solid $super-pink;
+    box-shadow:  $dark-blue(0, 0, 0, 0.25);
+    border-radius: 100px;
+
+  }
 
 
 .card-incoming-course {
