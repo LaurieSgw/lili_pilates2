@@ -1,11 +1,2 @@
-  date:
-    abbr_day_names: [Dim, Lun, Mar, Mer, Jeu, Ven, Sam]
-    abbr_month_names: [~, Jan, Fév, Mar, Avr, Mai, Jun, Jul, Août, Sep, Oct, Nov, Déc]
-    day_names: [Dimanche, Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi]
-    formats:
-      day_month: "%b %d"
-      default: "%Y-%m-%d"
-      hour: "%H:%M"
-      long: "%A %d %B %Y"
-      long_month: "%d %B %Y"
-      month_abbr: "%d %b %Y"
+fr:
+  hello: "Bonjour"
