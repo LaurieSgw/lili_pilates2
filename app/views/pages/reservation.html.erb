@@ -2,36 +2,5 @@
   <h1 class="text-center">Réserver un cours</h1>
    <h3 class="my-3 text-center">Les cours sont donnés en présentiel à l’adresse suivante : <strong>48 CHEMIN DE ROUFFIAC 31200 ROUFFIAC </strong>et durent <strong>50 minutes</strong>. </h3>
   <div>
-    <h2>ETAPE 1 : SELECTIONNER VOTRE TYPE D’ABONNEMENT</h2>
-      <div class="align-self-center">
-        <% if current_user.subscriptions.empty? %>
-          <div class="row">
-            <% @subscriptions.each do |subscription| %>
-              <% if subscription.sub_type > 1 %>
-                  <div class=" my-4 col-3 card-abo ">
-                    <h3>Abonnement  <%= subscription.sub_type %> séances</h3>
-                    <h3><%= subscription.price %> €</h3>
-                  </div>
-              <% elsif subscription.price == 0 %>
-                <div class=" my-4 col-3 card-abo ">
-                  <h3> Séance d'essai gratuite</h3>
-                  <h3><%= subscription.price %> €</h3>
-                </div>
-              <% else subscription.price == 15 %>
-                <div class=" my-4 col-3 card-abo ">
-                  <h3>Réserver <%=subscription.sub_type %> séance</h3>
-                  <h3><%= subscription.price %> €</h3>
-                </div>
-              <% end %>
-            <% end %>
-        <% else %>
-            <div class=" my-4 col-6 card-abo">
-              <h3>Vous avez un abonnement en cours : <strong>Abonnement<%=subscription.sub_type %> séances</strong></h3>
-                <p> Il vous reste <%= @subscription.courses_number %> cours à réserver.</p>
-            </div>
-        <% end %>
-      </div>
-  </div>
-  <h2 class="my-4">ETAPE 2 : SELECTIONNER UNE (OU plusieurs) date(s)</h2>
     <%= render "form", reservation: @reservation  %>
 </div>

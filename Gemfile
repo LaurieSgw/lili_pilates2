@@ -48,6 +48,9 @@ gem "sassc-rails"
 # Devise
 gem "devise"
 
+#I18n traduction
+gem "rails-i18n"
+
 # Rails admin
 gem 'rails_admin', '~> 3.0'
 

@@ -4,5 +4,4 @@ class Booking < ApplicationRecord
 
   scope :over, -> { where('date < ?', Date.today) }
   scope :upcoming, -> { where('date > ?', Date.today) }
-
 end
