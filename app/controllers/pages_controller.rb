@@ -5,12 +5,14 @@ class PagesController < ApplicationController
     @reviews = Review.all
   end
 
-  def dashboard
-  end
-
   def reservation
     @subscriptions = Subscription.all
     @courses = Course.all
+  end
+
+  def dashboard
+    @oayements = current_user.payements
+    @bookings = current_user.bookings
   end
 
 end
