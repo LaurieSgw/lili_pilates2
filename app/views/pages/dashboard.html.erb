@@ -1,3 +1,44 @@
 <div class="container my-3">
   <h1 class="text-center">Mon espace</h1>
+   <h3 class="my-3 text-center">Les cours sont donnés en présentiel à l’adresse suivante : <strong>48 CHEMIN DE ROUFFIAC 31200 ROUFFIAC </strong>et durent <strong>50 minutes</strong>. </h3>
+    <div>
+      <h2>Mon forfait: </h2>
+       <% if @payements.empty? %>
+        <p>Vous n'avez pas choisi d'abonnement pour le moment et préférez sans doute réserver votre cours à la séance.</p>
+        <p>Si vous changez d'avis, <%= link_to "c'est par ici !", reservation_path %> </p>
+      <% else @payements.subscriptions.sub_type == 10 || 20 %>
+        <p>Forfait <%= @payements.subscriptions.sub_type %> cours: il vous reste <%=  @payements.subscriptions.sub_type - @payements.subscriptions.course_number %> cours à réserver.</p>
+      <% end %>
+      <p> <%= link_to "Réserver dès maintenant", reservation_path %></p>
+    </div>
+    <div>
+      <h2 class="my-3">Mes cours à venir :</h2>
+        <% if @bookings.empty? %>
+          <h3>Vous n'avez pas encore réservé de cours.</h3>
+        <% else %>
+          <% @bookings.each do |booking| %>
+            <div class="col-4">
+              <div class="card-incoming-course">
+                <p><%= booking.course.date %></p>
+                  <%= link_to '❌', booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sur de vouloir annuler votre réservation ?"}, class: 'btn  btn-outline-info d-flex text-center justify-content-center' %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+    <div>
+    <div>
+      <h2 class="my-3">Mes cours terminés :</h2>
+        <% if @bookings.empty? %>
+           <h3>Vous n'avez pas encore de cours terminés.</h3>
+        <% else %>
+          <% @bookings.each do |booking| %>
+            <div class="col-4">
+              <div class="card-finished-course">
+                <p><%= booking.course.date %></p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+    </div>
+
 </div>
