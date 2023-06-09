@@ -20,10 +20,4 @@ class PagesController < ApplicationController
     @payements = current_user.payements
     @bookings = current_user.bookings
   end
-
-  # private
-
-  # def booking_params
-  #   params.require(:booking).permit(:status)
-  # end
 end

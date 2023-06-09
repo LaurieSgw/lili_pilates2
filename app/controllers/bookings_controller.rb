@@ -11,7 +11,7 @@ class BookingsController < ApplicationController
     raise
     @booking.course = Course.find(params[:course_id])
     if @booking.course.available_places.positive?
-      @booking.save && @booking.course.available_places -= 1
+     @booking.save && @booking.course.available_places -= 1
       redirect_to dashboard_path
     else
       render :new, status: :unprocessable_entity

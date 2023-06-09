@@ -1,60 +1,67 @@
 <h2>ETAPE 1 : SELECTIONNER VOTRE TYPE D’ABONNEMENT</h2>
-  <div class="align-self-center">
-    <% if current_user.subscriptions.empty? %>
-      <div class="row">
-        <% @subscriptions.each do |subscription| %>
-          <%= simple_form_for [@user, @subscription] do |f| %>
-              <% if subscription.sub_type > 1 %>
-                  <div class="my-4 col-3 card-abo ">
+  <div data-controller="select">
+    <div class="align-self-center">
+      <% if current_user.subscriptions.empty? %>
+        <div class="row">
+          <% @subscriptions.each do |subscription| %>
+            <%= simple_form_for [@user, @subscription] do |f| %>
+              <% case subscription.price %>
+              <% when 120 %>
+                  <div class="my-4 col-3 card-abo" data-action="click->select#selection" data-select-target="abo10">
                     <%= f.hidden_field :sub_type %>
                       <h3>Abonnement  <%= subscription.sub_type %> séances</h3>
                       <h3><%= subscription.price %> €</h3>
-                    <%= f.button :submit %>
+                    <%= f.button :submit,
+                                 value: ""%>
                   </div>
-              <% elsif subscription.price == 0 %>
-                <div class=" my-4 col-3 card-abo ">
+              <% when 240 %>
+                  <div class="my-4 col-3 card-abo" data-action="click->select#selection" data-select-target="abo20">
+                    <%= f.hidden_field :sub_type %>
+                      <h3>Abonnement  <%= subscription.sub_type %> séances</h3>
+                      <h3><%= subscription.price %> €</h3>
+                    <%= f.button :submit,
+                                 value: ""%>
+                  </div>
+              <% when 0 %>
+                <div class=" my-4 col-3 card-abo"  data-action="click->select#selection" data-select-target="gratuit">
                   <%= f.hidden_field :sub_type%>
                   <h3> Séance d'essai gratuite</h3>
                   <h3><%= subscription.price %> €</h3>
-                      <%= f.button :submit %>
+                      <%= f.button :submit, value: "" %>
                 </div>
-              <% else subscription.price == 15 %>
-                <div class=" my-4 col-3 card-abo ">
+              <% else 15 %>
+                <div class="my-4 col-3 card-abo"  data-action="click->select#selection" data-select-target="uneseance">
                   <%= f.hidden_field :sub_type %>
                   <h3>Réserver <%=subscription.sub_type %> séance</h3>
                   <h3><%= subscription.price %> €</h3>
-                      <%= f.button  :submit %>
+                  <%=f.button :submit, value: ""  %>
                 </div>
               <% end %>
+            <% end %>
           <% end %>
-        <% end %>
-      </div>
-    <% else %>
-        <div class=" my-4 col-6 card-abo">
-          <h3>Vous avez un abonnement en cours : <strong>Abonnement<%=subscription.sub_type %> séances</strong></h3>
-            <p> Il vous reste <%= @subscription.courses_number %> cours à réserver.</p>
         </div>
-    <% end %>
-  </div>
-  </div>
-  <h2 class="my-4">ETAPE 2 : SELECTIONNER UNE (OU plusieurs) date(s)</h2>
+      <% else %>
+          <div class=" my-4 col-6 card-abo">
+            <h3>Vous avez un abonnement en cours : <strong>Abonnement<%=subscription.sub_type %> séances</strong></h3>
+              <p> Il vous reste <%= @subscription.courses_number %> cours à réserver.</p>
+          </div>
+      <% end %>
+    </div>
+    <h2 class="my-4">ETAPE 2 : SELECTIONNER UNE (OU plusieurs) date(s)</h2>
 
-  <div class="row  my-3">
-    <% @courses.sort_by(&:date).each do |course| %>
-      <div class="card-course">
-        <%= simple_form_for [@user, @booking] do |f| %>
-          <%= f.hidden_field :status %>
-
-          <h3> <%= course.date.strftime("%A %d %B") %> à <%= course.date.time.strftime("%kh%M") %></h3>
-            <p class="my-1"> <%= course.available_places%> places disponibles !</p>
-            <div class="d-flex justify-content-center align-items-center">
-            <p class="m-2" >Choisir :</p>
-            </div>
-          <%= f.button  :submit %>
-       <% end %>
+    <div class="row  my-3">
+      <% @courses.sort_by(&:date).each do |course| %>
+        <div class="card-course"  data-action="click->select#selection" data-select-target="course">
+          <%= simple_form_for [@user, @booking] do |f| %>
+            <%= f.hidden_field :status %>
+              <h3> <%= course.date.strftime("%A %d %B") %> à <%= course.date.time.strftime("%kh%M") %></h3>
+              <p class="my-1"> <%= course.available_places%> places disponibles !</p>
+            <%= f.button  :submit %>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="my-5 text-center">
+        <%= link_to "Confirmer", "#", class: "button2" %>
       </div>
-    <% end %>
-    <div class="my-5 text-center">
-      <%= link_to "Confirmer", "#", class: "button2" %>
     </div>
   </div>
