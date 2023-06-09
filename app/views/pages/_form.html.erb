@@ -42,14 +42,15 @@
   <div class="row  my-3">
     <% @courses.sort_by(&:date).each do |course| %>
       <div class="card-course">
-        <%= simple_form_for [@user, @course] do |f| %>
-          <%= f.hidden_field :date %>
+        <%= simple_form_for [@user, @booking] do |f| %>
+          <%= f.hidden_field :status %>
 
           <h3> <%= course.date.strftime("%A %d %B") %> à <%= course.date.time.strftime("%kh%M") %></h3>
             <p class="my-1"> <%= course.available_places%> places disponibles !</p>
             <div class="d-flex justify-content-center align-items-center">
             <p class="m-2" >Choisir :</p>
             </div>
+          <%= f.button  :submit %>
        <% end %>
       </div>
     <% end %>
