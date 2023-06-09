@@ -11,8 +11,8 @@ Rails.application.routes.draw do
     resources :subscriptions, only: %i[new create] do
       resources :payements
     end
-    resources :courses, only: %i[index] do
-      resources :bookings, only: %i[new create destroy]
+    resources :bookings, only: %i[new create destroy] do
+      resources :courses, only: %i[index show]
     end
   end
   resources :reviews, only: %i[index new create]
