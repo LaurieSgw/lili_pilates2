@@ -12,14 +12,7 @@ export default class extends Controller {
      this.abo20Target.classList.toggle("card-abo-click");
      this.gratuitTarget.classList.toggle("card-abo-click");
      this.uneseanceTarget.classList.toggle("card-abo-click");
-     this.abo10Target.classList.toggle("card-abo");
-     this.abo20Target.classList.toggle("card-abo");
-     this.gratuitTarget.classList.toggle("card-abo");
-     this.uneseanceTarget.classList.toggle("card-abo");
-     this.gratuitTarget.classList.toggle("card-abo");
-     this.abo10Target.classList.toggle("card-abo");
-     this.abo20Target.classList.toggle("card-abo");
-     this.uneseanceTarget.classList.toggle("card-abo");
+     this.courseTarget.classList.toggle("card-abo-click");
 
 
 

@@ -8,7 +8,6 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
-    raise
     @booking.course = Course.find(params[:course_id])
     if @booking.course.available_places.positive?
      @booking.save && @booking.course.available_places -= 1

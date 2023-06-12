@@ -2,17 +2,18 @@
   <div data-controller="select">
     <div class="align-self-center">
       <% if current_user.subscriptions.empty? %>
-        <div class="row">
+        <div>
           <% @subscriptions.each do |subscription| %>
             <%= simple_form_for [@user, @subscription] do |f| %>
               <% case subscription.price %>
               <% when 120 %>
-                  <div class="my-4 col-3 card-abo" data-action="click->select#selection" data-select-target="abo10">
                     <%= f.hidden_field :sub_type %>
-                      <h3>Abonnement  <%= subscription.sub_type %> séances</h3>
+                  <div class="my-4 col-3 card-abo" data-action="click->select#selection" data-select-target="abo10">
+                      <h3>Abonnement <%= subscription.sub_type %> séances</h3>
                       <h3><%= subscription.price %> €</h3>
                     <%= f.button :submit,
-                                 value: ""%>
+                                 value: ""
+                                 %>
                   </div>
               <% when 240 %>
                   <div class="my-4 col-3 card-abo" data-action="click->select#selection" data-select-target="abo20">
