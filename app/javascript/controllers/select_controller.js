@@ -5,11 +5,18 @@ export default class extends Controller {
   static targets = ["subscription"];
 
   selection(event) {
-    this.subscriptionTargets.forEach(target => {
-      target.classList.remove("selected");
+    const target = event.currentTarget;
+
+    // Désélectionne toutes les autres cases
+    this.subscriptionTargets.forEach(subscription => {
+      if (subscription !== target) {
+        subscription.classList.remove("selected");
+      }
     });
 
-    event.currentTarget.classList.add("selected");
+    // Bascule l'état de sélection de la case actuelle
+    target.classList.toggle("selected");
+  }
 }
   // static targets = [ "abo10", "abo20", "gratuit", "uneseance", "course" ]
 
@@ -22,6 +29,3 @@ export default class extends Controller {
   //    this.gratuitTarget.classList.toggle("card-abo-click");
   //    this.uneseanceTarget.classList.toggle("card-abo-click");
   //    this.courseTarget.classList.toggle("card-abo-click");
-
-
-  }
