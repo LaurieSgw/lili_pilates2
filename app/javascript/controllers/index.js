@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import SelectController from "./select_controller"
 application.register("select", SelectController)
+
+import StepVisibilityController from "./step_visibility_controller"
+application.register("step-visibility", StepVisibilityController)

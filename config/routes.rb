@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
   get "dashboard", to: "pages#dashboard"
-  get "reservation", to: "pages#reservation"
+  get "/reservation", to: "pages#reservation"
   resources :users do
     resources :subscriptions, only: %i[new create] do
       resources :payements

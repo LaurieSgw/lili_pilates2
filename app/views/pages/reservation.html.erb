@@ -2,5 +2,33 @@
   <h1 class="text-center">Réserver un cours</h1>
    <h3 class="my-3 text-center">Les cours sont donnés en présentiel à l’adresse suivante : <strong>48 CHEMIN DE ROUFFIAC 31200 ROUFFIAC </strong>et durent <strong>50 minutes</strong>. </h3>
   <div>
-    <%= render "form", reservation: @reservation  %>
+    <h2>ETAPE 1 : SELECTIONNER VOTRE TYPE D’ABONNEMENT</h2>
+      <div data-controller="select">
+        <div class="align-self-center">
+          <% if current_user.subscriptions.empty? %>
+            <%= render "form", reservation: @reservation  %>
+          <% else %>
+            <div class=" my-4 col-6 card-abo">
+              <h3>Vous avez un abonnement en cours : <strong>Abonnement<%=subscription.sub_type %> séances</strong></h3>
+                <p> Il vous reste <%= @subscription.courses_number %> cours disponibles à réserver.</p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+  </div>
+  <div class="row my-3"  data-controller="step-visibility" data-step-visibility-target="step2">
+    <h2 class="my-4">ETAPE 2 : SELECTIONNER UNE (OU plusieurs) date(s)</h2>
+      <div class="row  my-3">
+        <% @courses.sort_by(&:date).each do |course| %>
+          <div class="card-course"  data-action="click->select#selection" data-select-target="course">
+            <%= simple_form_for [@user, @booking] do |f| %>
+              <%= f.hidden_field :status %>
+                <h3> <%= course.date.strftime("%A %d %B") %> à <%= course.date.time.strftime("%kh%M") %></h3>
+                <p class="my-1"> <%= course.available_places%> places disponibles !</p>
+              <%= f.button  :submit %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+  </div>
 </div>

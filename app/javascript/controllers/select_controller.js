@@ -1,23 +1,37 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="select"
 export default class extends Controller {
   static targets = ["subscription"];
+  selectedSubscription = null; // L'élément sélectionné
+  selectedSubscriptionId = null; // L'ID de l'élément sélectionné
 
   selection(event) {
     const target = event.currentTarget;
 
-    // Désélectionne toutes les autres cases
-    this.subscriptionTargets.forEach(subscription => {
-      if (subscription !== target) {
-        subscription.classList.remove("selected");
+    // Si une case était déjà sélectionnée
+    if (this.selectedSubscription) {
+      // Si la case cliquée est la même que celle déjà sélectionnée, la désélectionne
+      if (this.selectedSubscription === target) {
+        this.selectedSubscription.classList.remove("selected");
+        this.selectedSubscription = null;
+        this.selectedSubscriptionId = null;
+      } else {
+        // Sinon, désélectionne la précédente et sélectionne la nouvelle
+        this.selectedSubscription.classList.remove("selected");
+        target.classList.add("selected");
+        this.selectedSubscription = target;
+        this.selectedSubscriptionId = target.getAttribute("data-id");
       }
-    });
-
-    // Bascule l'état de sélection de la case actuelle
-    target.classList.toggle("selected");
+    } else {
+      // Aucune case sélectionnée, sélectionne simplement la case cliquée
+      target.classList.add("selected");
+      this.selectedSubscription = target;
+      this.selectedSubscriptionId = target.getAttribute("data-id");
+    }
   }
 }
+
+
   // static targets = [ "abo10", "abo20", "gratuit", "uneseance", "course" ]
 
   // selection(event) {
